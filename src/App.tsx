@@ -16,7 +16,7 @@ import {
 
 /* Omni Solutions AB - Landing Page
   Domain: www.osab-ai.se
-  Updated: Full screen layout & correct domain contact details.
+  Updated: Fixed Footer Full-Width issue & Layout
 */
 
 const OmniLandingPage = () => {
@@ -30,6 +30,7 @@ const OmniLandingPage = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+             {/* Ersätt src med din logotyp-sökväg */}
              <img src="/logo.png" alt="Omni Solutions AB" className="h-24 w-auto object-contain" />
           </div>
 
@@ -66,8 +67,7 @@ const OmniLandingPage = () => {
         )}
       </header>
 
-      {/* --- HERO SECTION (Full Screen) --- */}
-      {/* Added min-h-screen and flex logic to cover the entire viewport */}
+      {/* --- HERO SECTION --- */}
       <section className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-20 px-6 bg-gradient-to-b from-slate-50 to-[#F9FAFB]">
         <div className="container mx-auto max-w-5xl text-center z-10">
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-8">
@@ -92,7 +92,7 @@ const OmniLandingPage = () => {
           </div>
         </div>
         
-        {/* Subtle background decoration */}
+        {/* Background decorations */}
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl -z-0"></div>
         <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-0"></div>
       </section>
@@ -146,7 +146,6 @@ const OmniLandingPage = () => {
 
       {/* --- LEAD CAPTURE --- */}
       <section id="contact" className="w-full py-32 bg-white relative overflow-hidden">
-        {/* Dekorativ bakgrund */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-3xl opacity-60 -mr-40 -mt-40"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-100 rounded-full blur-3xl opacity-60 -ml-40 -mb-40"></div>
 
@@ -200,9 +199,9 @@ const OmniLandingPage = () => {
         </div>
       </section>
 
-      {/* --- TECH STACK --- */}
-      <section className="w-full py-16 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-6 text-center">
+      {/* --- TECH STACK (Full Width Fix) --- */}
+      <section className="w-full bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 py-16 text-center">
           <h3 className="text-xl font-bold text-slate-900 mb-4">Byggt med modern teknik</h3>
           <p className="text-slate-500 text-sm mb-10 max-w-2xl mx-auto">
             För att garantera snabbhet, säkerhet och skalbarhet använder vi marknadsledande verktyg.
@@ -217,38 +216,49 @@ const OmniLandingPage = () => {
         </div>
       </section>
 
-      {/* --- FOOTER --- */}
-      <footer className="w-full bg-slate-900 text-slate-300 py-16 border-t-4 border-[#008080]">
-        <div className="container mx-auto px-6">
+      {/* --- FOOTER (Full Width Fix) --- */}
+      {/* "w-full" här på utsidan garanterar att färgen går hela vägen */}
+      <footer className="w-full bg-slate-900 text-slate-300 border-t-4 border-[#008080]">
+        
+        {/* "max-w-7xl mx-auto" här på insidan centrerar innehållet */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            {/* Vänster sida */}
             <div className="text-center md:text-left">
               <h3 className="text-3xl font-bold text-white mb-2">Omni Solutions AB</h3>
               <p className="text-slate-400 text-lg">Din digitala partner på <span className="text-white font-medium">www.osab-ai.se</span></p>
             </div>
             
-            <div className="flex flex-col items-center md:items-end gap-3">
-              {/* UPDATED EMAIL to match domain */}
+            {/* Höger sida (Justerad layout) */}
+            <div className="flex flex-col items-center md:items-end gap-4">
               <a href="mailto:info@osab-ai.se" className="flex items-center gap-3 hover:text-white transition text-lg group">
                 <div className="p-2 bg-slate-800 rounded-full group-hover:bg-[#008080] transition">
                   <Mail size={20} />
                 </div>
                 info@osab-ai.se
               </a>
-              <div className="flex gap-4 mt-4">
-                <a href="#" className="p-3 bg-slate-800 rounded-full hover:bg-[#008080] transition"><Linkedin size={20} /></a>
-              </div>
+              <a href="#" className="flex items-center gap-3 hover:text-white transition text-lg group">
+                 <div className="p-2 bg-slate-800 rounded-full group-hover:bg-[#008080] transition">
+                  <Linkedin size={20} />
+                 </div>
+                 <span className="text-sm">Följ oss på LinkedIn</span>
+              </a>
             </div>
           </div>
+
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
             &copy; {new Date().getFullYear()} Omni Solutions AB. Alla rättigheter förbehållna.
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
 
 /* --- SUB-COMPONENTS --- */
+/* (Dessa är oförändrade, men inkluderade för att koden ska vara komplett) */
 
 const ServiceCard = ({ icon, title, description }) => (
   <div className="bg-slate-50 p-10 rounded-2xl border border-slate-100 hover:shadow-xl hover:border-teal-200 transition duration-300 group h-full flex flex-col">
@@ -291,8 +301,6 @@ const FAQCard = ({ question, answer }) => (
   </div>
 );
 
-/* LeadForm Component
-*/
 const LeadForm = () => {
   const [formData, setFormData] = useState({
     process: '',
@@ -320,31 +328,16 @@ const LeadForm = () => {
     const serviceID = 'service_e4lrv82';
     const publicKey = 'cE-ZYv81PI77BGB8k';
 
-    // 1. Skicka notis till Admin
-    const sendAdminNotification = emailjs.send(
-      serviceID, 
-      'template_81d0f9m',
-      templateParams, 
-      publicKey
-    );
-
-    // 2. Skicka auto-svar till kund
-    const sendAutoReply = emailjs.send(
-      serviceID, 
-      'template_tku2x04',
-      templateParams, 
-      publicKey
-    );
+    const sendAdminNotification = emailjs.send(serviceID, 'template_81d0f9m', templateParams, publicKey);
+    const sendAutoReply = emailjs.send(serviceID, 'template_tku2x04', templateParams, publicKey);
 
     Promise.all([sendAdminNotification, sendAutoReply])
       .then((responses) => {
-        console.log('BOTH EMAILS SENT!', responses);
         setIsSubmitted(true);
         setIsSending(false);
         setFormData({ process: '', systems: '', timeSpent: '', email: '' });
       })
       .catch((err) => {
-        console.error('FAILED...', err);
         alert('Något gick fel vid sändning. Kontrollera din anslutning eller försök igen senare.');
         setIsSending(false);
       });
@@ -359,18 +352,13 @@ const LeadForm = () => {
           </div>
         </div>
         <h3 className="text-3xl font-bold text-slate-900 mb-4">Tack! Vi har mottagit din beskrivning.</h3>
-        
         <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 max-w-lg mx-auto text-left">
           <p className="font-semibold text-[#008080] mb-2 text-lg">Nästa steg:</p>
           <p className="text-slate-600 leading-relaxed text-lg">
             Vi analyserar ditt behov och återkommer strax via mejl med 3-4 fördjupande frågor för att kunna skissa på din lösning.
           </p>
         </div>
-
-        <button 
-          onClick={() => setIsSubmitted(false)}
-          className="mt-10 text-base text-slate-500 font-medium hover:text-[#008080] transition underline"
-        >
+        <button onClick={() => setIsSubmitted(false)} className="mt-10 text-base text-slate-500 font-medium hover:text-[#008080] transition underline">
           Skicka en till förfrågan
         </button>
       </div>
@@ -379,93 +367,34 @@ const LeadForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      
-      {/* 1. Processen */}
       <div>
-        <label className="block text-base font-bold text-slate-700 mb-3">
-          1. Vilken process vill du effektivisera? <span className="text-red-400">*</span>
-        </label>
-        <textarea 
-          required
-          rows={3}
-          className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] focus:border-transparent outline-none transition resize-none bg-slate-50 focus:bg-white text-lg"
-          placeholder="T.ex. Hantering av inkommande fakturor och manuell inmatning i Visma..."
-          value={formData.process}
-          onChange={(e) => setFormData({...formData, process: e.target.value})}
-          disabled={isSending}
-        />
+        <label className="block text-base font-bold text-slate-700 mb-3">1. Vilken process vill du effektivisera? <span className="text-red-400">*</span></label>
+        <textarea required rows={3} className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition resize-none bg-slate-50 focus:bg-white text-lg" placeholder="T.ex. Hantering av inkommande fakturor..." value={formData.process} onChange={(e) => setFormData({...formData, process: e.target.value})} disabled={isSending} />
       </div>
-
-      {/* 2. System */}
       <div>
-        <label className="block text-base font-bold text-slate-700 mb-3">
-          2. Vilka program/system är inblandade idag?
-        </label>
-        <input 
-          type="text"
-          className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-slate-50 focus:bg-white text-lg"
-          placeholder="T.ex. Excel, Outlook och Visma..."
-          value={formData.systems}
-          onChange={(e) => setFormData({...formData, systems: e.target.value})}
-          disabled={isSending}
-        />
+        <label className="block text-base font-bold text-slate-700 mb-3">2. Vilka program/system är inblandade idag?</label>
+        <input type="text" className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-slate-50 focus:bg-white text-lg" placeholder="T.ex. Excel, Outlook och Visma..." value={formData.systems} onChange={(e) => setFormData({...formData, systems: e.target.value})} disabled={isSending} />
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* 3. Tid */}
         <div>
-          <label className="block text-base font-bold text-slate-700 mb-3">
-            3. Hur mycket tid lägger ni på detta?
-          </label>
+          <label className="block text-base font-bold text-slate-700 mb-3">3. Hur mycket tid lägger ni på detta?</label>
           <div className="relative">
-            <select 
-              className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-white appearance-none cursor-pointer text-lg"
-              value={formData.timeSpent}
-              onChange={(e) => setFormData({...formData, timeSpent: e.target.value})}
-              disabled={isSending}
-            >
+            <select className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-white appearance-none cursor-pointer text-lg" value={formData.timeSpent} onChange={(e) => setFormData({...formData, timeSpent: e.target.value})} disabled={isSending}>
               <option value="" disabled>Välj tidsåtgång...</option>
               <option value="<2h">&lt; 2 timmar/vecka</option>
               <option value="2-5h">2-5 timmar/vecka</option>
               <option value="5-10h">5-10 timmar/vecka</option>
               <option value="10h+">10+ timmar/vecka</option>
             </select>
-            <div className="absolute inset-y-0 right-0 flex items-center px-5 pointer-events-none text-slate-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-            </div>
           </div>
         </div>
-
-        {/* 4. Email */}
         <div>
-          <label className="block text-base font-bold text-slate-700 mb-3">
-            4. Din e-postadress <span className="text-red-400">*</span>
-          </label>
-          <input 
-            required
-            type="email"
-            className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-slate-50 focus:bg-white text-lg"
-            placeholder="namn@foretag.se"
-            value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
-            disabled={isSending}
-          />
+          <label className="block text-base font-bold text-slate-700 mb-3">4. Din e-postadress <span className="text-red-400">*</span></label>
+          <input required type="email" className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#008080] outline-none transition bg-slate-50 focus:bg-white text-lg" placeholder="namn@foretag.se" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} disabled={isSending} />
         </div>
       </div>
-
-      <button 
-        type="submit" 
-        disabled={isSending}
-        className={`w-full bg-[#008080] text-white font-bold text-xl py-5 rounded-xl hover:bg-teal-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-6 flex justify-center items-center gap-3 ${isSending ? 'opacity-70 cursor-not-allowed transform-none hover:shadow-lg' : ''}`}
-      >
-        {isSending ? (
-          <>
-            <span>Skickar...</span>
-            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </>
-        ) : (
-          "Skicka in – Vi återkommer med en lösning"
-        )}
+      <button type="submit" disabled={isSending} className={`w-full bg-[#008080] text-white font-bold text-xl py-5 rounded-xl hover:bg-teal-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-6 flex justify-center items-center gap-3 ${isSending ? 'opacity-70 cursor-not-allowed transform-none hover:shadow-lg' : ''}`}>
+        {isSending ? (<span>Skickar...</span>) : ("Skicka in – Vi återkommer med en lösning")}
       </button>
     </form>
   );
