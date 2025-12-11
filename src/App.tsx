@@ -29,7 +29,7 @@ const OmniLandingPage = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-             <img src="/logo.png" alt="Omni Solutions AB" className="h-12 w-auto" />
+             <img src="/logo.png" alt="Omni Solutions AB" className="h-20 w-auto" />
           </div>
 
           {/* Desktop Nav */}
